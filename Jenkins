@@ -1,17 +1,17 @@
-def author = sh (
-      script: 'cd jenkins_test && git --no-pager show -s --format=\'%an\'',
-      returnStdout: true
-).trim()
+def Authors = currentBuild.changeSets.collect { set -> set.collect { entry -> entry.author.fullName }}.flatten()
 
 pipeline {
     agent {
         docker { image 'ubuntu:16.04'}
     } 
     stages {
+    
         stage('test') {
             steps {
                 sh '''
-                echo ${author}
+                ls -al
+                git --no-pager show -s --format=\'%an\'
+                echo "${Authors}"
                 '''
             }
         }
