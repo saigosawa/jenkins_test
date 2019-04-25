@@ -7,7 +7,7 @@ pipeline {
         stage('test') {
             steps {
                 sh '''
-                cd jenkins_test
+                ls -l
                 author=`git --no-pager show -s --format=\'%an\'`
                 echo "${author}"
                 '''
