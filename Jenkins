@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh '''
                 ls -al
+                git --no-pager show -s --format=\'%an\'
                 echo "${Authors}"
                 '''
             }
