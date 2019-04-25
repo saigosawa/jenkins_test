@@ -1,7 +1,3 @@
-def author = sh (
-      script: 'cd jenkins_test && git --no-pager show -s --format=\'%an\'',
-      returnStdout: true
-).trim()
 
 pipeline {
     agent {
@@ -11,7 +7,7 @@ pipeline {
         stage('test') {
             steps {
                 sh '''
-                echo ${author}
+                echo "AAA"
                 '''
             }
         }
